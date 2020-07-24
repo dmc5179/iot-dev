@@ -1,5 +1,5 @@
 #################################################################################################################
-# Define the settings for the rook-ceph cluster with common settings for a production cluster.
+# Define the settings for the openshift-storage cluster with common settings for a production cluster.
 # All nodes with available raw devices will be used for the Ceph cluster. At least three nodes are required
 # in this example. See the documentation for more details on storage settings available.
 
@@ -12,8 +12,8 @@
 apiVersion: ceph.rook.io/v1
 kind: CephCluster
 metadata:
-  name: rook-ceph
-  namespace: rook-ceph
+  name: openshift-storage
+  namespace: openshift-storage
 spec:
   dataDirHostPath: /var/lib/rook
   mon:
@@ -71,11 +71,11 @@ spec:
                 - key: app
                   operator: In
                   values:
-                  - rook-ceph-osd
+                  - openshift-storage-osd
                 - key: app
                   operator: In
                   values:
-                  - rook-ceph-osd-prepare
+                  - openshift-storage-osd-prepare
               topologyKey: kubernetes.io/hostname
         topologySpreadConstraints:
         - maxSkew: 1
@@ -86,8 +86,8 @@ spec:
             - key: app
               operator: In
               values:
-              - rook-ceph-osd
-              - rook-ceph-osd-prepare
+              - openshift-storage-osd
+              - openshift-storage-osd-prepare
       resources:
       #   limits:
       #     cpu: "500m"

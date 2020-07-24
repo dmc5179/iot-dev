@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rook-ceph-tools
-  namespace: rook-ceph
+  name: openshift-storage-tools
+  namespace: openshift-storage
   labels:
-    app: rook-ceph-tools
+    app: openshift-storage-tools
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rook-ceph-tools
+      app: openshift-storage-tools
   template:
     metadata:
       labels:
-        app: rook-ceph-tools
+        app: openshift-storage-tools
     spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
-      - name: rook-ceph-tools
+      - name: openshift-storage-tools
         image: rook/ceph:v1.3.2
         command: ["/tini"]
         args: ["-g", "--", "/usr/local/bin/toolbox.sh"]
@@ -26,7 +26,7 @@ spec:
           - name: ROOK_ADMIN_SECRET
             valueFrom:
               secretKeyRef:
-                name: rook-ceph-mon
+                name: openshift-storage-mon
                 key: admin-secret
         volumeMounts:
           - mountPath: /etc/ceph
@@ -36,7 +36,7 @@ spec:
       volumes:
         - name: mon-endpoint-volume
           configMap:
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
             items:
             - key: data
               path: mon-endpoints

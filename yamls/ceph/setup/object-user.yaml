@@ -7,7 +7,7 @@ apiVersion: ceph.rook.io/v1
 kind: CephObjectStoreUser
 metadata:
   name: iot-user
-  namespace: rook-ceph
+  namespace: openshift-storage
 spec:
   store: my-store
   displayName: "iot-user"

@@ -1,7 +1,7 @@
 #################################################################################################################
 # Create the rook operator and necessary security context constraints for running
 # Rook in an OpenShift cluster.
-# For example, to create the rook-ceph cluster:
+# For example, to create the openshift-storage cluster:
 #   oc create -f common.yaml
 #   oc create -f operator-openshift.yaml
 #   oc create -f cluster.yaml
@@ -10,7 +10,7 @@
 kind: SecurityContextConstraints
 apiVersion: security.openshift.io/v1
 metadata:
-  name: rook-ceph
+  name: openshift-storage
 allowPrivilegedContainer: true
 allowHostNetwork: true
 allowHostDirVolumePlugin: true
@@ -32,7 +32,7 @@ supplementalGroups:
   type: RunAsAny
 allowedFlexVolumes:
   - driver: "ceph.rook.io/rook"
-  - driver: "ceph.rook.io/rook-ceph"
+  - driver: "ceph.rook.io/openshift-storage"
 volumes:
   - configMap
   - downwardAPI
@@ -44,18 +44,18 @@ volumes:
   - secret
 users:
   # A user needs to be added for each rook service account.
-  # This assumes running in the default sample "rook-ceph" namespace.
+  # This assumes running in the default sample "openshift-storage" namespace.
   # If other namespaces or service accounts are configured, they need to be updated here.
-  - system:serviceaccount:rook-ceph:rook-ceph-system
-  - system:serviceaccount:rook-ceph:default
-  - system:serviceaccount:rook-ceph:rook-ceph-mgr
-  - system:serviceaccount:rook-ceph:rook-ceph-osd
+  - system:serviceaccount:openshift-storage:openshift-storage-system
+  - system:serviceaccount:openshift-storage:default
+  - system:serviceaccount:openshift-storage:openshift-storage-mgr
+  - system:serviceaccount:openshift-storage:openshift-storage-osd
 ---
 # scc for the CSI driver
 kind: SecurityContextConstraints
 apiVersion: security.openshift.io/v1
 metadata:
-  name: rook-ceph-csi
+  name: openshift-storage-csi
 allowPrivilegedContainer: true
 allowHostNetwork: true
 allowHostDirVolumePlugin: true
@@ -77,16 +77,16 @@ supplementalGroups:
   type: RunAsAny
 allowedFlexVolumes:
   - driver: "ceph.rook.io/rook"
-  - driver: "ceph.rook.io/rook-ceph"
+  - driver: "ceph.rook.io/openshift-storage"
 volumes: ['*']
 users:
   # A user needs to be added for each rook service account.
-  # This assumes running in the default sample "rook-ceph" namespace.
+  # This assumes running in the default sample "openshift-storage" namespace.
   # If other namespaces or service accounts are configured, they need to be updated here.
-  - system:serviceaccount:rook-ceph:rook-csi-rbd-plugin-sa
-  - system:serviceaccount:rook-ceph:rook-csi-rbd-provisioner-sa
-  - system:serviceaccount:rook-ceph:rook-csi-cephfs-plugin-sa
-  - system:serviceaccount:rook-ceph:rook-csi-cephfs-provisioner-sa
+  - system:serviceaccount:openshift-storage:rook-csi-rbd-plugin-sa
+  - system:serviceaccount:openshift-storage:rook-csi-rbd-provisioner-sa
+  - system:serviceaccount:openshift-storage:rook-csi-cephfs-plugin-sa
+  - system:serviceaccount:openshift-storage:rook-csi-cephfs-provisioner-sa
 ---
 # Rook Ceph Operator Config
 # Use this ConfigMap to override operator configurations
@@ -95,9 +95,9 @@ users:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: rook-ceph-operator-config
+  name: openshift-storage-operator-config
   # should be in the namespace of the operator
-  namespace: rook-ceph
+  namespace: openshift-storage
 data:
   # Enable the CSI driver.
   # To run the non-default version of the CSI driver, see the override-able image properties in operator.yaml
@@ -174,24 +174,24 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rook-ceph-operator
-  namespace: rook-ceph
+  name: openshift-storage-operator
+  namespace: openshift-storage
   labels:
     operator: rook
     storage-backend: ceph
 spec:
   selector:
     matchLabels:
-      app: rook-ceph-operator
+      app: openshift-storage-operator
   replicas: 1
   template:
     metadata:
       labels:
-        app: rook-ceph-operator
+        app: openshift-storage-operator
     spec:
-      serviceAccountName: rook-ceph-system
+      serviceAccountName: openshift-storage-system
       containers:
-      - name: rook-ceph-operator
+      - name: openshift-storage-operator
         image: rook/ceph:v1.3.2
         args: ["ceph", "operator"]
         volumeMounts:

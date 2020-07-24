@@ -40,7 +40,7 @@ func cephDestroy() {
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
 
 	//Switch Context and Reload Config Flags
-	co.SwitchContext("rook-ceph-system")
+	co.SwitchContext("openshift-storage-system")
 
 	log.Println("Removing Ceph Via Rook v1.3.2")
 	for _, command := range co.Commands {

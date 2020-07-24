@@ -43,14 +43,14 @@ func cephSetup() {
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
 
 	//Switch Context and Reload Config Flags
-	co.SwitchContext("rook-ceph")
+	co.SwitchContext("openshift-storage")
 
 	log.Println("Setup Ceph Object Storage with Rook Operator v1.3.2")
 	for commandNumber, command := range co.Commands {
 
 		if commandNumber == 4 {
-			//After the pods in rook-ceph are provisioned wait for them to become ready before moving on
-			log.Print("Waiting for pods to be ready in rook-ceph")
+			//After the pods in openshift-storage are provisioned wait for them to become ready before moving on
+			log.Print("Waiting for pods to be ready in openshift-storage")
 			podStatus := utils.NewpodStatus()
 			for podStatus.Running != 23 && podStatus.Succeeded != 3 {
 				cmd := get.NewCmdGet("kubectl", co.CurrentFactory, IOStreams)

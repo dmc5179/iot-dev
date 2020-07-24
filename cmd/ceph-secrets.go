@@ -32,12 +32,12 @@ func getCredentials(user string) {
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
 
 	//Switch Context and Reload Config Flags
-	co.SwitchContext("rook-ceph")
+	co.SwitchContext("openshift-storage")
 
 	log.Print("Get S3 secrets, save for possible later use:")
 	cmd := get.NewCmdGet("kubectl", co.CurrentFactory, IOStreams)
 	cmd.Flags().Set("output", "jsonpath={.data}")
-	cmd.Run(cmd, []string{co.Commands[0], "rook-ceph-object-user-my-store-" + user})
+	cmd.Run(cmd, []string{co.Commands[0], "openshift-storage-object-user-my-store-" + user})
 	log.Info(out.String())
 	out.Reset()
 

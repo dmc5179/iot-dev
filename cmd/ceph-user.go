@@ -34,7 +34,7 @@ func cephUser(user string) {
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
 
 	//Switch Context and Reload Config Flags
-	co.SwitchContext("rook-ceph")
+	co.SwitchContext("openshift-storage")
 
 	tmpFile, err := ioutil.TempFile(os.TempDir(), "service-")
 	if err != nil {

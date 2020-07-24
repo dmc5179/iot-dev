@@ -85,7 +85,7 @@ func kafkaSetup() {
 
 	//Wait until all resources are up
 
-	//After the pods in rook-ceph are provisioned wait for them to become ready before moving on
+	//After the pods in openshift-storage are provisioned wait for them to become ready before moving on
 	log.Print("Waiting for Kafka deployment to be ready")
 	podStatus := utils.NewpodStatus()
 	for podStatus.Running != 4 {

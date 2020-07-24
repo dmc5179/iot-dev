@@ -20,25 +20,25 @@ items:
       prometheus.io/port: "9283"
       prometheus.io/scrape: "true"
     creationTimestamp: "2020-04-21T21:58:54Z"
-    generateName: rook-ceph-mgr-a-59f5b66c5f-
+    generateName: openshift-storage-mgr-a-59f5b66c5f-
     labels:
-      app: rook-ceph-mgr
+      app: openshift-storage-mgr
       ceph_daemon_id: a
       instance: a
       mgr: a
       pod-template-hash: 59f5b66c5f
-      rook_cluster: rook-ceph
-    name: rook-ceph-mgr-a-59f5b66c5f-rdwd6
-    namespace: rook-ceph
+      rook_cluster: openshift-storage
+    name: openshift-storage-mgr-a-59f5b66c5f-rdwd6
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-mgr-a-59f5b66c5f
+      name: openshift-storage-mgr-a-59f5b66c5f
       uid: fc6c697f-af38-4b1e-8d46-6a1c740dfe27
     resourceVersion: "4273796"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-mgr-a-59f5b66c5f-rdwd6
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-mgr-a-59f5b66c5f-rdwd6
     uid: cf3fcfd9-93d1-420c-9b56-8d119f754b6c
   spec:
     affinity: {}
@@ -66,7 +66,7 @@ items:
             apiVersion: v1
             fieldPath: spec.nodeName
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       image: ceph/ceph:v13.2.4-20190109
       imagePullPolicy: IfNotPresent
       name: mgr
@@ -97,12 +97,12 @@ items:
       - mountPath: /etc/ceph
         name: ceph-default-config-dir
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-mgr-token-wp659
+        name: openshift-storage-mgr-token-wp659
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     imagePullSecrets:
-    - name: rook-ceph-mgr-dockercfg-qs5gl
+    - name: openshift-storage-mgr-dockercfg-qs5gl
     initContainers:
     - args:
       - ceph
@@ -114,7 +114,7 @@ items:
         valueFrom:
           secretKeyRef:
             key: keyring
-            name: rook-ceph-mgr-a
+            name: openshift-storage-mgr-a
       - name: ROOK_PRIVATE_IP
         valueFrom:
           fieldRef:
@@ -136,17 +136,17 @@ items:
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CEPH_CONFIG_OVERRIDE
         value: /etc/rook/config/override.conf
       image: rook/ceph:v0.9.3
@@ -171,7 +171,7 @@ items:
       - mountPath: /etc/rook/config
         name: rook-config-override
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-mgr-token-wp659
+        name: openshift-storage-mgr-token-wp659
         readOnly: true
     nodeName: astoycos-ocp-vlft2-worker-qmjmh
     priority: 0
@@ -181,8 +181,8 @@ items:
       fsGroup: 1000810000
       seLinuxOptions:
         level: s0:c28,c27
-    serviceAccount: rook-ceph-mgr
-    serviceAccountName: rook-ceph-mgr
+    serviceAccount: openshift-storage-mgr
+    serviceAccountName: openshift-storage-mgr
     terminationGracePeriodSeconds: 30
     tolerations:
     - effect: NoExecute
@@ -205,10 +205,10 @@ items:
           path: override.conf
         name: rook-config-override
       name: rook-config-override
-    - name: rook-ceph-mgr-token-wp659
+    - name: openshift-storage-mgr-token-wp659
       secret:
         defaultMode: 420
-        secretName: rook-ceph-mgr-token-wp659
+        secretName: openshift-storage-mgr-token-wp659
   status:
     conditions:
     - lastProbeTime: null
@@ -277,27 +277,27 @@ items:
                 "10.129.0.1"
             ]
         }]
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T21:57:04Z"
-    generateName: rook-ceph-mon-a-5669964977-
+    generateName: openshift-storage-mon-a-5669964977-
     labels:
-      app: rook-ceph-mon
+      app: openshift-storage-mon
       ceph_daemon_id: a
       mon: a
-      mon_cluster: rook-ceph
+      mon_cluster: openshift-storage
       pod-template-hash: "5669964977"
-      rook_cluster: rook-ceph
-    name: rook-ceph-mon-a-5669964977-pj7wm
-    namespace: rook-ceph
+      rook_cluster: openshift-storage
+    name: openshift-storage-mon-a-5669964977-pj7wm
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-mon-a-5669964977
+      name: openshift-storage-mon-a-5669964977
       uid: 5c556d97-0f1d-4ef9-9d8c-d4bb7dc9e335
     resourceVersion: "4273245"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-mon-a-5669964977-pj7wm
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-mon-a-5669964977-pj7wm
     uid: ed8e7c7f-f191-4144-bb58-c2d99609707f
   spec:
     affinity: {}
@@ -369,22 +369,22 @@ items:
       - name: ROOK_PUBLIC_IP
         value: 172.30.211.70
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CEPH_CONFIG_OVERRIDE
         value: /etc/rook/config/override.conf
       image: rook/ceph:v0.9.3
@@ -594,27 +594,27 @@ items:
                 "10.130.0.1"
             ]
         }]
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T21:57:29Z"
-    generateName: rook-ceph-mon-b-85bfd6f7bf-
+    generateName: openshift-storage-mon-b-85bfd6f7bf-
     labels:
-      app: rook-ceph-mon
+      app: openshift-storage-mon
       ceph_daemon_id: b
       mon: b
-      mon_cluster: rook-ceph
+      mon_cluster: openshift-storage
       pod-template-hash: 85bfd6f7bf
-      rook_cluster: rook-ceph
-    name: rook-ceph-mon-b-85bfd6f7bf-b5kxg
-    namespace: rook-ceph
+      rook_cluster: openshift-storage
+    name: openshift-storage-mon-b-85bfd6f7bf-b5kxg
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-mon-b-85bfd6f7bf
+      name: openshift-storage-mon-b-85bfd6f7bf
       uid: 5df5c1d7-03ed-47b1-8c65-fbb115bfbc8f
     resourceVersion: "4273330"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-mon-b-85bfd6f7bf-b5kxg
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-mon-b-85bfd6f7bf-b5kxg
     uid: ef37b724-a07c-4ae1-b14a-8b47357dd47c
   spec:
     affinity: {}
@@ -686,22 +686,22 @@ items:
       - name: ROOK_PUBLIC_IP
         value: 172.30.180.181
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CEPH_CONFIG_OVERRIDE
         value: /etc/rook/config/override.conf
       image: rook/ceph:v0.9.3
@@ -914,27 +914,27 @@ items:
                 "10.131.0.1"
             ]
         }]
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T21:57:41Z"
-    generateName: rook-ceph-mon-c-f6bc79758-
+    generateName: openshift-storage-mon-c-f6bc79758-
     labels:
-      app: rook-ceph-mon
+      app: openshift-storage-mon
       ceph_daemon_id: c
       mon: c
-      mon_cluster: rook-ceph
+      mon_cluster: openshift-storage
       pod-template-hash: f6bc79758
-      rook_cluster: rook-ceph
-    name: rook-ceph-mon-c-f6bc79758-smn8p
-    namespace: rook-ceph
+      rook_cluster: openshift-storage
+    name: openshift-storage-mon-c-f6bc79758-smn8p
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-mon-c-f6bc79758
+      name: openshift-storage-mon-c-f6bc79758
       uid: 85f3e6aa-3934-4777-ab74-4c6456d28dc2
     resourceVersion: "4273485"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-mon-c-f6bc79758-smn8p
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-mon-c-f6bc79758-smn8p
     uid: 77acdea0-51f7-4a83-bb5f-3f35da7ca6eb
   spec:
     affinity: {}
@@ -1006,22 +1006,22 @@ items:
       - name: ROOK_PUBLIC_IP
         value: 172.30.52.100
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CEPH_CONFIG_OVERRIDE
         value: /etc/rook/config/override.conf
       image: rook/ceph:v0.9.3
@@ -1237,25 +1237,25 @@ items:
                 "10.129.0.1"
             ]
         }]
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T22:01:42Z"
-    generateName: rook-ceph-osd-0-765d9cd445-
+    generateName: openshift-storage-osd-0-765d9cd445-
     labels:
-      app: rook-ceph-osd
+      app: openshift-storage-osd
       ceph-osd-id: "0"
       pod-template-hash: 765d9cd445
-      rook_cluster: rook-ceph
-    name: rook-ceph-osd-0-765d9cd445-qx8br
-    namespace: rook-ceph
+      rook_cluster: openshift-storage
+    name: openshift-storage-osd-0-765d9cd445-qx8br
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-osd-0-765d9cd445
+      name: openshift-storage-osd-0-765d9cd445
       uid: 0f83f56d-49b5-4325-8e56-1f1aee50b4e5
     resourceVersion: "4274710"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-osd-0-765d9cd445-qx8br
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-osd-0-765d9cd445-qx8br
     uid: 31698a62-bc9c-49c6-a409-e95024c1f257
   spec:
     affinity: {}
@@ -1265,13 +1265,13 @@ items:
       - --id
       - "0"
       - --conf
-      - /var/lib/rook/osd0/rook-ceph.config
+      - /var/lib/rook/osd0/openshift-storage.config
       - --osd-data
       - /var/lib/rook/osd0
       - --keyring
       - /var/lib/rook/osd0/keyring
       - --cluster
-      - rook-ceph
+      - openshift-storage
       - --osd-uuid
       - 95e6e518-69d8-44e2-8bb5-49abc664d17e
       - --osd-journal=/var/lib/rook/osd0/journal
@@ -1330,13 +1330,13 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     hostPID: true
     imagePullSecrets:
-    - name: rook-ceph-osd-dockercfg-fjpfw
+    - name: openshift-storage-osd-dockercfg-fjpfw
     initContainers:
     - args:
       - ceph
@@ -1358,22 +1358,22 @@ items:
             apiVersion: v1
             fieldPath: status.podIP
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CONFIG_DIR
         value: /var/lib/rook
       - name: ROOK_CEPH_CONFIG_OVERRIDE
@@ -1382,7 +1382,7 @@ items:
         valueFrom:
           secretKeyRef:
             key: fsid
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_OSD_DATABASE_SIZE
         value: "1024"
       - name: ROOK_OSD_JOURNAL_SIZE
@@ -1410,7 +1410,7 @@ items:
       - mountPath: /etc/rook/config
         name: rook-config-override
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     - args:
       - ceph
@@ -1429,7 +1429,7 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     nodeName: astoycos-ocp-vlft2-worker-jfbd6
     nodeSelector:
@@ -1441,8 +1441,8 @@ items:
       fsGroup: 1000810000
       seLinuxOptions:
         level: s0:c28,c27
-    serviceAccount: rook-ceph-osd
-    serviceAccountName: rook-ceph-osd
+    serviceAccount: openshift-storage-osd
+    serviceAccountName: openshift-storage-osd
     terminationGracePeriodSeconds: 30
     tolerations:
     - effect: NoExecute
@@ -1469,10 +1469,10 @@ items:
       name: rook-config-override
     - emptyDir: {}
       name: rook-binaries
-    - name: rook-ceph-osd-token-nqs62
+    - name: openshift-storage-osd-token-nqs62
       secret:
         defaultMode: 420
-        secretName: rook-ceph-osd-token-nqs62
+        secretName: openshift-storage-osd-token-nqs62
   status:
     conditions:
     - lastProbeTime: null
@@ -1555,25 +1555,25 @@ items:
                 "10.130.0.1"
             ]
         }]
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T22:02:11Z"
-    generateName: rook-ceph-osd-1-7b9cfb9964-
+    generateName: openshift-storage-osd-1-7b9cfb9964-
     labels:
-      app: rook-ceph-osd
+      app: openshift-storage-osd
       ceph-osd-id: "1"
       pod-template-hash: 7b9cfb9964
-      rook_cluster: rook-ceph
-    name: rook-ceph-osd-1-7b9cfb9964-tnm5j
-    namespace: rook-ceph
+      rook_cluster: openshift-storage
+    name: openshift-storage-osd-1-7b9cfb9964-tnm5j
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-osd-1-7b9cfb9964
+      name: openshift-storage-osd-1-7b9cfb9964
       uid: 099f874d-e6e7-4c10-9731-387974fa5171
     resourceVersion: "4274975"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-osd-1-7b9cfb9964-tnm5j
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-osd-1-7b9cfb9964-tnm5j
     uid: 1d31b7e5-7781-4f16-8376-d001c164066b
   spec:
     affinity: {}
@@ -1583,13 +1583,13 @@ items:
       - --id
       - "1"
       - --conf
-      - /var/lib/rook/osd1/rook-ceph.config
+      - /var/lib/rook/osd1/openshift-storage.config
       - --osd-data
       - /var/lib/rook/osd1
       - --keyring
       - /var/lib/rook/osd1/keyring
       - --cluster
-      - rook-ceph
+      - openshift-storage
       - --osd-uuid
       - acbc2909-fbab-40db-94c5-68831ec1229b
       - --osd-journal=/var/lib/rook/osd1/journal
@@ -1648,13 +1648,13 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     hostPID: true
     imagePullSecrets:
-    - name: rook-ceph-osd-dockercfg-fjpfw
+    - name: openshift-storage-osd-dockercfg-fjpfw
     initContainers:
     - args:
       - ceph
@@ -1676,22 +1676,22 @@ items:
             apiVersion: v1
             fieldPath: status.podIP
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CONFIG_DIR
         value: /var/lib/rook
       - name: ROOK_CEPH_CONFIG_OVERRIDE
@@ -1700,7 +1700,7 @@ items:
         valueFrom:
           secretKeyRef:
             key: fsid
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_OSD_DATABASE_SIZE
         value: "1024"
       - name: ROOK_OSD_JOURNAL_SIZE
@@ -1728,7 +1728,7 @@ items:
       - mountPath: /etc/rook/config
         name: rook-config-override
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     - args:
       - ceph
@@ -1747,7 +1747,7 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     nodeName: astoycos-ocp-vlft2-worker-qmjmh
     nodeSelector:
@@ -1759,8 +1759,8 @@ items:
       fsGroup: 1000810000
       seLinuxOptions:
         level: s0:c28,c27
-    serviceAccount: rook-ceph-osd
-    serviceAccountName: rook-ceph-osd
+    serviceAccount: openshift-storage-osd
+    serviceAccountName: openshift-storage-osd
     terminationGracePeriodSeconds: 30
     tolerations:
     - effect: NoExecute
@@ -1787,10 +1787,10 @@ items:
       name: rook-config-override
     - emptyDir: {}
       name: rook-binaries
-    - name: rook-ceph-osd-token-nqs62
+    - name: openshift-storage-osd-token-nqs62
       secret:
         defaultMode: 420
-        secretName: rook-ceph-osd-token-nqs62
+        secretName: openshift-storage-osd-token-nqs62
   status:
     conditions:
     - lastProbeTime: null
@@ -1873,25 +1873,25 @@ items:
                 "10.131.0.1"
             ]
         }]
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T22:02:25Z"
-    generateName: rook-ceph-osd-2-69ff64744d-
+    generateName: openshift-storage-osd-2-69ff64744d-
     labels:
-      app: rook-ceph-osd
+      app: openshift-storage-osd
       ceph-osd-id: "2"
       pod-template-hash: 69ff64744d
-      rook_cluster: rook-ceph
-    name: rook-ceph-osd-2-69ff64744d-p7gm2
-    namespace: rook-ceph
+      rook_cluster: openshift-storage
+    name: openshift-storage-osd-2-69ff64744d-p7gm2
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-osd-2-69ff64744d
+      name: openshift-storage-osd-2-69ff64744d
       uid: a7547ad5-a814-49b0-bf7c-19e17e819939
     resourceVersion: "4275077"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-osd-2-69ff64744d-p7gm2
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-osd-2-69ff64744d-p7gm2
     uid: 7abd111a-fe38-4ee2-9c19-c2014afe20d6
   spec:
     affinity: {}
@@ -1901,13 +1901,13 @@ items:
       - --id
       - "2"
       - --conf
-      - /var/lib/rook/osd2/rook-ceph.config
+      - /var/lib/rook/osd2/openshift-storage.config
       - --osd-data
       - /var/lib/rook/osd2
       - --keyring
       - /var/lib/rook/osd2/keyring
       - --cluster
-      - rook-ceph
+      - openshift-storage
       - --osd-uuid
       - d353eefe-68eb-4ae5-9425-a7c9053e0086
       - --osd-journal=/var/lib/rook/osd2/journal
@@ -1966,13 +1966,13 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     hostPID: true
     imagePullSecrets:
-    - name: rook-ceph-osd-dockercfg-fjpfw
+    - name: openshift-storage-osd-dockercfg-fjpfw
     initContainers:
     - args:
       - ceph
@@ -1994,22 +1994,22 @@ items:
             apiVersion: v1
             fieldPath: status.podIP
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CONFIG_DIR
         value: /var/lib/rook
       - name: ROOK_CEPH_CONFIG_OVERRIDE
@@ -2018,7 +2018,7 @@ items:
         valueFrom:
           secretKeyRef:
             key: fsid
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_OSD_DATABASE_SIZE
         value: "1024"
       - name: ROOK_OSD_JOURNAL_SIZE
@@ -2046,7 +2046,7 @@ items:
       - mountPath: /etc/rook/config
         name: rook-config-override
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     - args:
       - ceph
@@ -2065,7 +2065,7 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     nodeName: astoycos-ocp-vlft2-worker-r7nbp
     nodeSelector:
@@ -2077,8 +2077,8 @@ items:
       fsGroup: 1000810000
       seLinuxOptions:
         level: s0:c28,c27
-    serviceAccount: rook-ceph-osd
-    serviceAccountName: rook-ceph-osd
+    serviceAccount: openshift-storage-osd
+    serviceAccountName: openshift-storage-osd
     terminationGracePeriodSeconds: 30
     tolerations:
     - effect: NoExecute
@@ -2105,10 +2105,10 @@ items:
       name: rook-config-override
     - emptyDir: {}
       name: rook-binaries
-    - name: rook-ceph-osd-token-nqs62
+    - name: openshift-storage-osd-token-nqs62
       secret:
         defaultMode: 420
-        secretName: rook-ceph-osd-token-nqs62
+        secretName: openshift-storage-osd-token-nqs62
   status:
     conditions:
     - lastProbeTime: null
@@ -2180,25 +2180,25 @@ items:
   metadata:
     annotations:
       k8s.v1.cni.cncf.io/networks-status: ""
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T22:01:10Z"
-    generateName: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6-
+    generateName: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6-
     labels:
-      app: rook-ceph-osd-prepare
+      app: openshift-storage-osd-prepare
       controller-uid: ed7b1627-35c0-46d3-b004-5132a2ce3364
-      job-name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6
-      rook_cluster: rook-ceph
-    name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6-nxgmt
-    namespace: rook-ceph
+      job-name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6
+      rook_cluster: openshift-storage
+    name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6-nxgmt
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: batch/v1
       blockOwnerDeletion: true
       controller: true
       kind: Job
-      name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6
+      name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6
       uid: ed7b1627-35c0-46d3-b004-5132a2ce3364
     resourceVersion: "4274653"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6-nxgmt
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-jfbd6-nxgmt
     uid: 10c20d8c-67be-42cc-823a-d724fc369f63
   spec:
     affinity: {}
@@ -2220,7 +2220,7 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     - args:
       - --
@@ -2246,22 +2246,22 @@ items:
             apiVersion: v1
             fieldPath: status.podIP
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CONFIG_DIR
         value: /var/lib/rook
       - name: ROOK_CEPH_CONFIG_OVERRIDE
@@ -2270,7 +2270,7 @@ items:
         valueFrom:
           secretKeyRef:
             key: fsid
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_OSD_DATABASE_SIZE
         value: "1024"
       - name: ROOK_OSD_JOURNAL_SIZE
@@ -2296,12 +2296,12 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     imagePullSecrets:
-    - name: rook-ceph-osd-dockercfg-fjpfw
+    - name: openshift-storage-osd-dockercfg-fjpfw
     nodeName: astoycos-ocp-vlft2-worker-jfbd6
     nodeSelector:
       kubernetes.io/hostname: astoycos-ocp-vlft2-worker-jfbd6
@@ -2312,8 +2312,8 @@ items:
       fsGroup: 1000810000
       seLinuxOptions:
         level: s0:c28,c27
-    serviceAccount: rook-ceph-osd
-    serviceAccountName: rook-ceph-osd
+    serviceAccount: openshift-storage-osd
+    serviceAccountName: openshift-storage-osd
     terminationGracePeriodSeconds: 30
     tolerations:
     - effect: NoExecute
@@ -2340,10 +2340,10 @@ items:
       name: rook-config-override
     - emptyDir: {}
       name: rook-binaries
-    - name: rook-ceph-osd-token-nqs62
+    - name: openshift-storage-osd-token-nqs62
       secret:
         defaultMode: 420
-        secretName: rook-ceph-osd-token-nqs62
+        secretName: openshift-storage-osd-token-nqs62
   status:
     conditions:
     - lastProbeTime: null
@@ -2408,25 +2408,25 @@ items:
   metadata:
     annotations:
       k8s.v1.cni.cncf.io/networks-status: ""
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T22:01:10Z"
-    generateName: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh-
+    generateName: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh-
     labels:
-      app: rook-ceph-osd-prepare
+      app: openshift-storage-osd-prepare
       controller-uid: 0886ab99-f932-4705-8ddd-e1d2f6c90c4d
-      job-name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh
-      rook_cluster: rook-ceph
-    name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh-2szlf
-    namespace: rook-ceph
+      job-name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh
+      rook_cluster: openshift-storage
+    name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh-2szlf
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: batch/v1
       blockOwnerDeletion: true
       controller: true
       kind: Job
-      name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh
+      name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh
       uid: 0886ab99-f932-4705-8ddd-e1d2f6c90c4d
     resourceVersion: "4274994"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh-2szlf
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-qmjmh-2szlf
     uid: af30e30b-5494-4bb4-b4ae-30e78e47b1cb
   spec:
     affinity: {}
@@ -2448,7 +2448,7 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     - args:
       - --
@@ -2474,22 +2474,22 @@ items:
             apiVersion: v1
             fieldPath: status.podIP
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CONFIG_DIR
         value: /var/lib/rook
       - name: ROOK_CEPH_CONFIG_OVERRIDE
@@ -2498,7 +2498,7 @@ items:
         valueFrom:
           secretKeyRef:
             key: fsid
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_OSD_DATABASE_SIZE
         value: "1024"
       - name: ROOK_OSD_JOURNAL_SIZE
@@ -2524,12 +2524,12 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     imagePullSecrets:
-    - name: rook-ceph-osd-dockercfg-fjpfw
+    - name: openshift-storage-osd-dockercfg-fjpfw
     nodeName: astoycos-ocp-vlft2-worker-qmjmh
     nodeSelector:
       kubernetes.io/hostname: astoycos-ocp-vlft2-worker-qmjmh
@@ -2540,8 +2540,8 @@ items:
       fsGroup: 1000810000
       seLinuxOptions:
         level: s0:c28,c27
-    serviceAccount: rook-ceph-osd
-    serviceAccountName: rook-ceph-osd
+    serviceAccount: openshift-storage-osd
+    serviceAccountName: openshift-storage-osd
     terminationGracePeriodSeconds: 30
     tolerations:
     - effect: NoExecute
@@ -2568,10 +2568,10 @@ items:
       name: rook-config-override
     - emptyDir: {}
       name: rook-binaries
-    - name: rook-ceph-osd-token-nqs62
+    - name: openshift-storage-osd-token-nqs62
       secret:
         defaultMode: 420
-        secretName: rook-ceph-osd-token-nqs62
+        secretName: openshift-storage-osd-token-nqs62
   status:
     conditions:
     - lastProbeTime: null
@@ -2647,25 +2647,25 @@ items:
                 "10.131.0.1"
             ]
         }]
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T22:01:10Z"
-    generateName: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp-
+    generateName: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp-
     labels:
-      app: rook-ceph-osd-prepare
+      app: openshift-storage-osd-prepare
       controller-uid: 1dabaa36-5b6f-49cd-b87a-90d01789d087
-      job-name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp
-      rook_cluster: rook-ceph
-    name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp-q9jb6
-    namespace: rook-ceph
+      job-name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp
+      rook_cluster: openshift-storage
+    name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp-q9jb6
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: batch/v1
       blockOwnerDeletion: true
       controller: true
       kind: Job
-      name: rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp
+      name: openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp
       uid: 1dabaa36-5b6f-49cd-b87a-90d01789d087
     resourceVersion: "4275038"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp-q9jb6
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-osd-prepare-astoycos-ocp-vlft2-worker-r7nbp-q9jb6
     uid: 9b848582-ff69-41dd-805d-0889cabdbe3a
   spec:
     affinity: {}
@@ -2687,7 +2687,7 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     - args:
       - --
@@ -2713,22 +2713,22 @@ items:
             apiVersion: v1
             fieldPath: status.podIP
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_ADMIN_SECRET
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CONFIG_DIR
         value: /var/lib/rook
       - name: ROOK_CEPH_CONFIG_OVERRIDE
@@ -2737,7 +2737,7 @@ items:
         valueFrom:
           secretKeyRef:
             key: fsid
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_OSD_DATABASE_SIZE
         value: "1024"
       - name: ROOK_OSD_JOURNAL_SIZE
@@ -2763,12 +2763,12 @@ items:
       - mountPath: /rook
         name: rook-binaries
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: rook-ceph-osd-token-nqs62
+        name: openshift-storage-osd-token-nqs62
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     imagePullSecrets:
-    - name: rook-ceph-osd-dockercfg-fjpfw
+    - name: openshift-storage-osd-dockercfg-fjpfw
     nodeName: astoycos-ocp-vlft2-worker-r7nbp
     nodeSelector:
       kubernetes.io/hostname: astoycos-ocp-vlft2-worker-r7nbp
@@ -2779,8 +2779,8 @@ items:
       fsGroup: 1000810000
       seLinuxOptions:
         level: s0:c28,c27
-    serviceAccount: rook-ceph-osd
-    serviceAccountName: rook-ceph-osd
+    serviceAccount: openshift-storage-osd
+    serviceAccountName: openshift-storage-osd
     terminationGracePeriodSeconds: 30
     tolerations:
     - effect: NoExecute
@@ -2807,10 +2807,10 @@ items:
       name: rook-config-override
     - emptyDir: {}
       name: rook-binaries
-    - name: rook-ceph-osd-token-nqs62
+    - name: openshift-storage-osd-token-nqs62
       secret:
         defaultMode: 420
-        secretName: rook-ceph-osd-token-nqs62
+        secretName: openshift-storage-osd-token-nqs62
   status:
     conditions:
     - lastProbeTime: null
@@ -2888,23 +2888,23 @@ items:
         }]
       openshift.io/scc: restricted
     creationTimestamp: "2020-04-21T22:07:50Z"
-    generateName: rook-ceph-rgw-my-store-8585c445b4-
+    generateName: openshift-storage-rgw-my-store-8585c445b4-
     labels:
-      app: rook-ceph-rgw
+      app: openshift-storage-rgw
       pod-template-hash: 8585c445b4
-      rook_cluster: rook-ceph
+      rook_cluster: openshift-storage
       rook_object_store: my-store
-    name: rook-ceph-rgw-my-store-8585c445b4-4dgk7
-    namespace: rook-ceph
+    name: openshift-storage-rgw-my-store-8585c445b4-4dgk7
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-rgw-my-store-8585c445b4
+      name: openshift-storage-rgw-my-store-8585c445b4
       uid: 79831b17-d772-47b2-bc18-29903bba6b4d
     resourceVersion: "4276760"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-rgw-my-store-8585c445b4-4dgk7
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-rgw-my-store-8585c445b4-4dgk7
     uid: bca470b7-bbf9-4701-8d09-08dc3c182183
   spec:
     affinity: {}
@@ -2970,7 +2970,7 @@ items:
         valueFrom:
           secretKeyRef:
             key: keyring
-            name: rook-ceph-rgw-my-store
+            name: openshift-storage-rgw-my-store
       - name: ROOK_PRIVATE_IP
         valueFrom:
           fieldRef:
@@ -2982,17 +2982,17 @@ items:
             apiVersion: v1
             fieldPath: status.podIP
       - name: ROOK_CLUSTER_NAME
-        value: rook-ceph
+        value: openshift-storage
       - name: ROOK_MON_ENDPOINTS
         valueFrom:
           configMapKeyRef:
             key: data
-            name: rook-ceph-mon-endpoints
+            name: openshift-storage-mon-endpoints
       - name: ROOK_MON_SECRET
         valueFrom:
           secretKeyRef:
             key: mon-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       - name: ROOK_CEPH_CONFIG_OVERRIDE
         value: /etc/rook/config/override.conf
       image: rook/ceph:v0.9.3
@@ -3111,23 +3111,23 @@ items:
   kind: Pod
   metadata:
     annotations:
-      openshift.io/scc: rook-ceph
+      openshift.io/scc: openshift-storage
     creationTimestamp: "2020-04-21T21:56:30Z"
-    generateName: rook-ceph-tools-78bddc766-
+    generateName: openshift-storage-tools-78bddc766-
     labels:
-      app: rook-ceph-tools
+      app: openshift-storage-tools
       pod-template-hash: 78bddc766
-    name: rook-ceph-tools-78bddc766-fglfd
-    namespace: rook-ceph
+    name: openshift-storage-tools-78bddc766-fglfd
+    namespace: openshift-storage
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: ReplicaSet
-      name: rook-ceph-tools-78bddc766
+      name: openshift-storage-tools-78bddc766
       uid: 0c833ded-9574-46b6-b630-7d2525a00192
     resourceVersion: "4273331"
-    selfLink: /api/v1/namespaces/rook-ceph/pods/rook-ceph-tools-78bddc766-fglfd
+    selfLink: /api/v1/namespaces/openshift-storage/pods/openshift-storage-tools-78bddc766-fglfd
     uid: 1bbff728-5fbe-46c7-9e56-a5ca76cade73
   spec:
     containers:
@@ -3142,10 +3142,10 @@ items:
         valueFrom:
           secretKeyRef:
             key: admin-secret
-            name: rook-ceph-mon
+            name: openshift-storage-mon
       image: rook/ceph:v0.9.3
       imagePullPolicy: IfNotPresent
-      name: rook-ceph-tools
+      name: openshift-storage-tools
       resources: {}
       securityContext:
         privileged: true
@@ -3206,7 +3206,7 @@ items:
         items:
         - key: data
           path: mon-endpoints
-        name: rook-ceph-mon-endpoints
+        name: openshift-storage-mon-endpoints
       name: mon-endpoint-volume
     - name: default-token-j8ssz
       secret:
@@ -3235,7 +3235,7 @@ items:
       image: docker.io/rook/ceph:v0.9.3
       imageID: docker.io/rook/ceph@sha256:38ba0ae4e3a0a0c3b5e5a4605f58d47e997f06b2a19ad2a35d4a2bd9268d3b30
       lastState: {}
-      name: rook-ceph-tools
+      name: openshift-storage-tools
       ready: true
       restartCount: 0
       started: true
