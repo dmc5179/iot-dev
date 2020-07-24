@@ -77,7 +77,7 @@ func service(service string) {
 		sedCommands := []string{` /- name: S3_ID/,/- name: S3_SECRET_KEY/s/value: .*/value: ` + string(decodedcephAccessKey) + `/`, ` /- name: CEPH_ENDPOINT/,/- name: S3_ID/s/value: .*/value: http:\/\/` + cephEndpoint + `/`,
 			` /- name: S3_SECRET_KEY/,/- name: TF_URL/s/value: .*/value: ` + string(decodedcephSecretKey) + `/`, ` /- name: TF_URL/,/value:/s/value: .*/value: http:\/\/` + tensorflowIP + `:8501\/v1\/models\/ssdlite_mobilenet_v2_coco_2018_05_09:predict/`}
 
-		myOutput := utils.RemoteSed(sedCommands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/knative/services/video-analytics.yaml")
+		myOutput := utils.RemoteSed(sedCommands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/knative/services/video-analytics.yaml")
 
 		//Write updated yaml to tempfile
 		tmpFile.Write(myOutput.Bytes())
@@ -95,7 +95,7 @@ func service(service string) {
 		sedCommands := []string{` /- name: S3_ID/,/- name: S3_SECRET_KEY/s/value: .*/value: ` + string(decodedcephAccessKey) + `/`, ` /- name: CEPH_ENDPOINT/,/- name: S3_ID/s/value: .*/value: http:\/\/` + cephEndpoint + `/`,
 			` /- name: S3_SECRET_KEY/,/value:/s/value: .*/value: ` + string(decodedcephSecretKey) + `/`}
 
-		myOutput := utils.RemoteSed(sedCommands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/knative/services/video-serving.yaml")
+		myOutput := utils.RemoteSed(sedCommands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/knative/services/video-serving.yaml")
 
 		tmpFile.Write(myOutput.Bytes())
 		log.Println("the Source file: ", myOutput.String())
@@ -106,7 +106,7 @@ func service(service string) {
 
 		co.Commands = append(co.Commands, tmpFile.Name())
 	default:
-		co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/knative/services/"+service+".yaml")
+		co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/knative/services/"+service+".yaml")
 		if err := tmpFile.Close(); err != nil {
 			log.Fatal(err)
 		}

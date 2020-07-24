@@ -27,7 +27,7 @@ func tensorflowServingSetup() {
 
 	co := utils.NewCommandOptions()
 
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/tensorflow/setup/tensorflowServing.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/tensorflow/setup/tensorflowServing.yaml")
 
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
 

@@ -66,7 +66,7 @@ func createProject() {
 
 	//Fill in the commands that must be applied to
 	//Install Enmasse Core
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/myapp-namespace.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/myapp-namespace.yaml")
 	co.Commands = append(co.Commands, enmasseFolderName+"/install/components/iot/examples/iot-project-managed.yaml")
 	co.Commands = append(co.Commands, enmasseFolderName+"/install/components/iot/examples/iot-user.yaml")
 	//

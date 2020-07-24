@@ -29,7 +29,7 @@ import (
 func cephUser(user string) {
 	co := utils.NewCommandOptions()
 
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/ceph/setup/object-user.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/ceph/setup/object-user.yaml")
 
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
 
@@ -44,7 +44,7 @@ func cephUser(user string) {
 
 	sedCommands := []string{`s/name: .*/name: ` + user + `/`, `s/displayName: .*/displayName: "` + user + `"/`}
 
-	myOutput := utils.RemoteSed(sedCommands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/ceph/setup/object-user.yaml")
+	myOutput := utils.RemoteSed(sedCommands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/ceph/setup/object-user.yaml")
 
 	//Write updated yaml to tempfile
 	tmpFile.Write(myOutput.Bytes())

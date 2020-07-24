@@ -34,8 +34,8 @@ func kafkaBridgeRouteDestroy() {
 	co := utils.NewCommandOptions()
 
 	//Fill in the commands that must be applied to
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/kafka/bridge/route.yaml")
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/kafka/bridge/kafka-bridge.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/kafka/bridge/route.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/kafka/bridge/kafka-bridge.yaml")
 
 	//
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
@@ -65,10 +65,10 @@ func kafkaBridgeDestroy() {
 	log.Println("oc Source folder: ", "oc")
 
 	//Fill in the commands that must be applied to
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/kafka/bridge/kafka-bridge.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/kafka/bridge/kafka-bridge.yaml")
 	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/mandatory.yaml")
 	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/provider/cloud-generic.yaml")
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/kafka/bridge/ingress.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/kafka/bridge/ingress.yaml")
 
 	//
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()

@@ -35,9 +35,9 @@ func destroyKnative() {
 	co := utils.NewCommandOptions()
 
 	//Install Openshift Serveless and  Knative Serving
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/knative/setup/knative-eventing.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/knative/setup/knative-eventing.yaml")
 
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/knative/setup/knative-serving.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/knative/setup/knative-serving.yaml")
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
 
 	co.SwitchContext("knative-eventing")

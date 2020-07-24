@@ -60,9 +60,9 @@ func kafkaSetup() {
 	}
 
 	//Fill in the commands that must be applied to
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/kafka/setup/kafka-namespace.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/kafka/setup/kafka-namespace.yaml")
 	co.Commands = append(co.Commands, tmpFile.Name())
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/kafka/setup/kafka.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/kafka/setup/kafka.yaml")
 	//
 	IOStreams, _, out, _ := genericclioptions.NewTestIOStreams()
 

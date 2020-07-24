@@ -49,7 +49,7 @@ func enmasseSetup() {
 	}
 	//Fill ain the commands that must be applied to
 	//Install Enmasse Core
-	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/enmasse-infra-namespace.yaml")
+	co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/enmasse-infra-namespace.yaml")
 	co.Commands = append(co.Commands, folderName+"install/bundles/enmasse")
 	co.Commands = append(co.Commands, folderName+"install/components/example-plans")
 	co.Commands = append(co.Commands, folderName+"install/components/example-roles")

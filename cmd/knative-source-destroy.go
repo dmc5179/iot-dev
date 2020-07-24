@@ -44,7 +44,7 @@ func desContainerSource(source string) {
 	case "kafka":
 		co.Commands = append(co.Commands, "https://storage.googleapis.com/knative-releases/eventing-contrib/latest/kafka-source.yaml")
 	default:
-		co.Commands = append(co.Commands, "https://raw.githubusercontent.com/redhat-iot/iot-dev/master/yamls/knative/sources/"+source+".yaml")
+		co.Commands = append(co.Commands, "https://raw.githubusercontent.com/dmc5179/iot-dev/ocs/yamls/knative/sources/"+source+".yaml")
 	}
 
 	//Install Openshift Serveless and  Knative Serving
